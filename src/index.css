@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-bodY {
+body {
   font-family: sans-serif;
   background-color: #41e2ba;
   transition: background-color 300ms ease-in-out;
@@ -20,6 +20,10 @@ bodY {
 
 .working {
   background-color: #ef5d50;
+}
+
+.pausing {
+  background-color: #FFFF00;
 }
 
 .hidden {
@@ -56,8 +60,8 @@ bodY {
   cursor: pointer;
   padding: 1rem 2rem;
   color: #000;
+  border-radius: 4px;
   transition: background-color 300ms ease-in-out;
-
   margin: 20px auto;
   align-items: center;
 }
