@@ -15,13 +15,17 @@ export function PomodoroTimer(props: Props): JSX.Element {
   const [timeCount, setTimeCounting] = React.useState(false);
   const [working, setWorking] = React.useState(false);
 
+  React.useEffect(() => {
+    if (working) document.body.classList.add('working')
+  }, [working])
+
   useInterval(() => {
     setMainTime(mainTime - 1);
   }, timeCount ? 1000 : null);
 
   const configureWork = () => {
     setTimeCounting(true);
-    setWorking(working);
+    setWorking(true);
   }
 
   return (
@@ -30,8 +34,8 @@ export function PomodoroTimer(props: Props): JSX.Element {
       <Timer mainTime={mainTime}/>
       <div className="controls">
         <Button text="Work" onClick={() => configureWork()}/>
-        <Button text="teste" onClick={() => console.log('oi')}/>
-        <Button text="teste" onClick={() => console.log('oi')}/>
+        {working && <Button text="Resting" onClick={() => console.log('oi')}/>}
+        {working && <Button text={timeCount ? 'Pause' : 'Play'} onClick={() => setTimeCounting(!timeCount)}/>}
       </div>
       <div className="details">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eligendi excepturi obcaecati fugit ipsam suscipit praesentium, eos nesciunt, iusto porro illum. Ipsum tenetur ad, mollitia maxime nisi impedit nemo asperiores.</p>
